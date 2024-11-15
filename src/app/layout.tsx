@@ -27,8 +27,8 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en" className={cn(inter.variable, eb_garamond.variable)}>
-        <body className="bg-brand-50 font-sans text-brand-950 antialiased">
-          {children}
+        <body className="flex min-h-[calc(100vh-1px)] flex-col bg-brand-50 font-sans text-brand-950 antialiased">
+          <main className="relative flex flex-1 flex-col">{children}</main>
         </body>
       </html>
     </ClerkProvider>
