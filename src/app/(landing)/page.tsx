@@ -1,8 +1,11 @@
-import { Check, LetterText } from "lucide-react";
+import { Check } from "lucide-react";
 
+import DiscordMessage from "@/components/discord-message";
 import Heading from "@/components/heading";
 import MaxWidthWrapper from "@/components/max-width-wrapper";
+import MockDiscordUI from "@/components/mock-discord-ui";
 import ShinyButton from "@/components/shiny-button";
+import { AnimatedList } from "@/components/ui/animated-list";
 
 const App = () => {
   return (
@@ -50,7 +53,59 @@ const App = () => {
           </div>
         </MaxWidthWrapper>
       </section>
-      <section></section>
+      <section className="relative bg-brand-25 pb-4">
+        <div className="absolute inset-x-0 bottom-24 top-24 bg-brand-700" />
+        <div className="relative mx-auto">
+          <MaxWidthWrapper className="relative">
+            <div className="-m-2 rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:-m-4 lg:rounded-2xl lg:p-4">
+              <MockDiscordUI>
+                <AnimatedList>
+                  <DiscordMessage
+                    avatarSrc="/brand-asset-profile-picture.png"
+                    avatarAlt="PingPanda Avatar"
+                    username="PingPanda"
+                    timestamp="Today at 12:35PM"
+                    badgeText="SignUp"
+                    badgeColor="#43B581"
+                    title="👤 New User Signed Up"
+                    content={{
+                      name: "Mushood Hanif",
+                      email: "mohdmushood@yahoo.com",
+                    }}
+                  />
+                  <DiscordMessage
+                    avatarSrc="/brand-asset-profile-picture.png"
+                    avatarAlt="PingPanda Avatar"
+                    username="PingPanda"
+                    timestamp="Today at 12:35PM"
+                    badgeText="Revenue"
+                    badgeColor="#FAA61A"
+                    title="💰 Payment Received"
+                    content={{
+                      plan: "PRO",
+                      amount: "$49.00",
+                      email: "zoe_martinez@yahoo.com",
+                    }}
+                  />
+                  <DiscordMessage
+                    avatarSrc="/brand-asset-profile-picture.png"
+                    avatarAlt="PingPanda Avatar"
+                    username="PingPanda"
+                    timestamp="Today at 05:11AM"
+                    badgeText="Milestone"
+                    badgeColor="#5865F2"
+                    title="🚀 Revenue Milestone Achieved"
+                    content={{
+                      recurringRevenue: "$5,000",
+                      growth: "+8.2%",
+                    }}
+                  />
+                </AnimatedList>
+              </MockDiscordUI>
+            </div>
+          </MaxWidthWrapper>
+        </div>
+      </section>
       <section></section>
       <section></section>
     </>

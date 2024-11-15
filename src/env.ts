@@ -7,14 +7,14 @@ export const env = createEnv({
     NODE_ENV: z
       .enum(["development", "test", "production"])
       .default("development"),
-    CLERK_SECRET_KEY: z.string().regex(/^pk_test_[A-Za-z0-9-\.]+$/, {
+    CLERK_SECRET_KEY: z.string().regex(/^sk_test_[A-Za-z0-9-\.]+$/, {
       message: "Invalid CLERK_SECRET_KEY format",
     }),
   },
   client: {
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z
       .string()
-      .regex(/^sk_test_[A-Za-z0-9]+$/, {
+      .regex(/^pk_test_[A-Za-z0-9]+$/, {
         message: "Invalid NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY format",
       }),
   },
