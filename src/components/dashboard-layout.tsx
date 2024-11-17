@@ -21,14 +21,16 @@ const DashboardLayout = ({
   return (
     <section className="flex h-full w-full flex-1 flex-col">
       <div className="flex justify-between border-b border-gray-200 p-6 sm:p-8">
-        <div className="flex flex-col gap-x-8 gap-y-2 sm:flex-row sm:items-center">
-          {hideBackButton ? null : (
-            <Button className="w-fit bg-white" variant="outline">
-              <ArrowLeft className="size-4" />
-            </Button>
-          )}
-          <Heading>{title}</Heading>
-          {cta ? <div className="">{cta}</div> : null}
+        <div className="w-full flex flex-col items-start gap-y-6">
+          <div className="flex items-center gap-x-8">
+            {hideBackButton ? null : (
+              <Button className="w-fit bg-white" variant="outline">
+                <ArrowLeft className="size-4" />
+              </Button>
+            )}
+            <Heading>{title}</Heading>
+          </div>
+          {cta ? <div className="w-full sm:w-fit">{cta}</div> : null}
         </div>
       </div>
       <div className="flex flex-1 flex-col overflow-y-auto p-6 sm:p-8">
