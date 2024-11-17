@@ -34,7 +34,14 @@ import { Modal } from "./ui/modal";
 
 /* ↑ The only shitty thing about tailwind ↑ */
 
-const CreateEventCategoryModal = ({ children }: PropsWithChildren) => {
+interface CreateEventCategoryModalProps extends PropsWithChildren {
+  containerClassName?: string;
+}
+
+const CreateEventCategoryModal = ({
+  children,
+  containerClassName,
+}: CreateEventCategoryModalProps) => {
   const queryClient = useQueryClient();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
@@ -71,7 +78,7 @@ const CreateEventCategoryModal = ({ children }: PropsWithChildren) => {
 
   return (
     <>
-      <div className="" onClick={() => setIsOpen(true)}>
+      <div className={containerClassName} onClick={() => setIsOpen(true)}>
         {children}
       </div>
       <Modal

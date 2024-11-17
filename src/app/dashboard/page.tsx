@@ -32,7 +32,8 @@ const Page = async () => {
       cta={
         <CreateEventCategoryModal>
           <Button className="w-full sm:w-fit">
-            Add Category <Plus className="ml-2 size-4" />
+            <Plus className="ml-2 size-4" />
+            &nbsp;Add Category
           </Button>
         </CreateEventCategoryModal>
       }
