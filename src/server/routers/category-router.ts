@@ -1,4 +1,5 @@
 import { startOfMonth } from "date-fns";
+import { HTTPException } from "hono/http-exception";
 import { z } from "zod";
 
 import { db } from "@/db";
@@ -206,4 +207,40 @@ export const categoryRouter = router({
       });
     }
   }),
+  pollCategory: privateProcedure
+    .input(
+      z.object({
+        name: CATEGORY_NAME_VALIDATOR,
+      })
+    )
+    .query(async ({ c, ctx, input }) => {
+      const category = await db.eventCategory.findUnique({
+        where: {
+          name_userId: {
+            name: input.name,
+            userId: ctx.user.id,
+          },
+        },
+        include: {
+          _count: {
+            select: {
+              events: true,
+            },
+          },
+        },
+      });
+
+      if (!category) {
+        throw new HTTPException(404, {
+          message: `Category "${input.name}" not found`,
+        });
+      }
+
+      const hasEvents = category._count.events > 0;
+
+      return c.json({
+        success: true,
+        hasEvents,
+      });
+    }),
 });
