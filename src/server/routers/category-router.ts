@@ -2,6 +2,12 @@ import { startOfMonth } from "date-fns";
 import { z } from "zod";
 
 import { db } from "@/db";
+import { parseColor } from "@/lib/utils";
+import {
+  CATEGORY_COLOR_VALIDATOR,
+  CATEGORY_EMOJI_VALIDATOR,
+  CATEGORY_NAME_VALIDATOR,
+} from "@/lib/validators/category-validator";
 
 import { router } from "../__internals/router";
 import { privateProcedure } from "../procedures";
@@ -118,6 +124,44 @@ export const categoryRouter = router({
       } catch (error) {
         return c.json({
           success: false,
+          error,
+        });
+      }
+    }),
+  createCategory: privateProcedure
+    .input(
+      z.object({
+        name: CATEGORY_NAME_VALIDATOR,
+        color: CATEGORY_COLOR_VALIDATOR,
+        emoji: CATEGORY_EMOJI_VALIDATOR,
+      })
+    )
+    .mutation(async ({ c, ctx, input }) => {
+      const { color, name, emoji } = input;
+
+      try {
+        const eventCategory = await db.eventCategory.create({
+          data: {
+            name: name.toLowerCase(),
+            color: parseColor(color),
+            emoji,
+            userId: ctx.user.id,
+          },
+        });
+
+        if (!eventCategory) {
+          return c.json({
+            success: false,
+          });
+        }
+
+        return c.json({
+          success: true,
+        });
+      } catch (error) {
+        return c.json({
+          success: false,
+          error,
         });
       }
     }),
