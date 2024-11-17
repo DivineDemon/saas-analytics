@@ -38,20 +38,9 @@ const CreateEventCategoryModal = ({ children }: PropsWithChildren) => {
   const queryClient = useQueryClient();
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
-  const { mutate: createCategory, isPending: isCreatingCategory } = useMutation(
-    {
-      mutationFn: async (data: EventCategoryForm) => {
-        await client.category.createCategory.$post(data);
-      },
-      onSuccess: () => {
-        queryClient.invalidateQueries({ queryKey: ["user-event-categories"] });
-        setIsOpen(false);
-      },
-    }
-  );
-
   const {
     watch,
+    reset,
     register,
     setValue,
     handleSubmit,
@@ -62,6 +51,19 @@ const CreateEventCategoryModal = ({ children }: PropsWithChildren) => {
 
   const color = watch("color");
   const selectedEmoji = watch("emoji");
+
+  const { mutate: createCategory, isPending: isCreatingCategory } = useMutation(
+    {
+      mutationFn: async (data: EventCategoryForm) => {
+        await client.category.createCategory.$post(data);
+      },
+      onSuccess: () => {
+        queryClient.invalidateQueries({ queryKey: ["user-event-categories"] });
+        reset();
+        setIsOpen(false);
+      },
+    }
+  );
 
   const onSubmit = (data: EventCategoryForm) => {
     createCategory(data);
