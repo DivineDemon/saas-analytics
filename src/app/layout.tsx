@@ -3,6 +3,7 @@ import { EB_Garamond, Inter } from "next/font/google";
 
 import { ClerkProvider } from "@clerk/nextjs";
 
+import { Providers } from "@/components/providers";
 import { cn } from "@/lib/utils";
 
 import "./globals.css";
@@ -28,7 +29,9 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en" className={cn(inter.variable, eb_garamond.variable)}>
         <body className="flex min-h-[calc(100vh-1px)] flex-col bg-brand-50 font-sans text-brand-950 antialiased">
-          <main className="relative flex flex-1 flex-col">{children}</main>
+          <main className="relative flex flex-1 flex-col">
+            <Providers>{children}</Providers>
+          </main>
         </body>
       </html>
     </ClerkProvider>
