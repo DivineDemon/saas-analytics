@@ -68,3 +68,10 @@ export const PRO_QUOTA = {
   maxEventsPerMonth: 1000,
   maxEventCategories: 10,
 } as const;
+
+export const INCLUDED_FEATURES = [
+  "10,000 real-time events per month",
+  "10 event categories",
+  "Advanced analytics and insights",
+  "Priority support",
+];
