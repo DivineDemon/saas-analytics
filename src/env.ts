@@ -11,6 +11,12 @@ export const env = createEnv({
       message: "Invalid CLERK_SECRET_KEY format",
     }),
     VERCEL_URL: z.string().url().optional(),
+    DISCORD_BOT_TOKEN: z
+      .string()
+      .regex(
+        /^[A-Za-z0-9_\-]{26}\.[A-Za-z0-9_\-]{6}\.[A-Za-z0-9_\-]{38}$/,
+        "Invalid Discord bot token format"
+      ),
   },
   client: {
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z
@@ -26,6 +32,7 @@ export const env = createEnv({
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
       process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
+    DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   emptyStringAsUndefined: true,

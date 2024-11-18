@@ -171,17 +171,17 @@ export const categoryRouter = router({
       const categories = await db.eventCategory.createMany({
         data: [
           {
-            name: "Bug",
+            name: "bug",
             emoji: "🐞",
             color: 0xff6b6b,
           },
           {
-            name: "Sale",
+            name: "sale",
             emoji: "💰",
             color: 0xffeb3b,
           },
           {
-            name: "Question",
+            name: "question",
             emoji: "🤔",
             color: 0x6c5ce7,
           },
