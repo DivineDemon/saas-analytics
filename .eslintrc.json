@@ -6,7 +6,8 @@
   ],
   "plugins": [
     "check-file",
-    "n"
+    "n",
+    "@typescript-eslint"
   ],
   "rules": {
     "@typescript-eslint/ban-types": [
