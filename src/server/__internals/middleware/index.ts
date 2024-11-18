@@ -14,9 +14,6 @@ export const queryParsingMiddleware: MiddlewareHandler = async (c, next) => {
   await next();
 };
 
-/**
- * Middleware to parse POST-requests using SuperJSON
- */
 export const bodyParsingMiddleware: MiddlewareHandler = async (c, next) => {
   const rawBody = await c.req.json();
   const parsedBody: Record<string, unknown> = {};

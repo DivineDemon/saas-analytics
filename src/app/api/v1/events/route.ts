@@ -102,7 +102,7 @@ export const POST = async (request: NextRequest) => {
 
     const validationResult = REQUEST_VALIDATOR.parse(requestData);
     const category = user.EventCategory.find(
-      (cat) => (cat.name = validationResult.category)
+      (cat) => cat.name === validationResult.category
     );
 
     if (!category) {
