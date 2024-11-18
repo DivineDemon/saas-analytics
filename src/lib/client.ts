@@ -15,9 +15,9 @@ const getBaseUrl = () => {
     return "http://localhost:3000/";
   }
 
-  if (env.VERCEL_URL) {
-    return `https://${env.VERCEL_URL}`;
-  }
+  // if (env.VERCEL_URL) {
+  //   return `https://${env.VERCEL_URL}`;
+  // }
 
   return "https://<YOUR_DEPLOYED_WORKER_URL>/";
 };
@@ -59,9 +59,11 @@ function getHandler(obj: Object, ...keys: string[]) {
   for (const key of keys) {
     current = current[key as keyof typeof current];
   }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return current as Function;
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function serializeWithSuperJSON(data: any): any {
   if (typeof data !== "object" || data === null) {
     return data;
@@ -74,6 +76,7 @@ function serializeWithSuperJSON(data: any): any {
   );
 }
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function createProxy(target: any, path: string[] = []): any {
   return new Proxy(target, {
     get(target, prop, receiver) {
@@ -81,6 +84,7 @@ function createProxy(target: any, path: string[] = []): any {
         const newPath = [...path, prop];
 
         if (prop === "$get") {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           return async (...args: any[]) => {
             const executor = getHandler(baseClient, ...newPath);
             const serializedQuery = serializeWithSuperJSON(args[0]);
@@ -89,6 +93,7 @@ function createProxy(target: any, path: string[] = []): any {
         }
 
         if (prop === "$post") {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           return async (...args: any[]) => {
             const executor = getHandler(baseClient, ...newPath);
             const serializedJson = serializeWithSuperJSON(args[0]);

@@ -56,6 +56,7 @@ export class Procedure<ctx = {}> {
       c: Context<{ Bindings: typeof env }>;
     }) => Promise<Return>
   ): Procedure<ctx & T & Return> {
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return new Procedure<ctx & T & Return>([...this.middlewares, fn as any]);
   }
 
@@ -75,6 +76,7 @@ export class Procedure<ctx = {}> {
     ): QueryOperation<Schema, Output> => ({
       type: "query",
       schema,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       handler: fn as any,
       middlewares: this.middlewares,
     }),
@@ -92,6 +94,7 @@ export class Procedure<ctx = {}> {
     ): MutationOperation<Schema, Output> => ({
       type: "mutation",
       schema,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       handler: fn as any,
       middlewares: this.middlewares,
     }),
@@ -112,6 +115,7 @@ export class Procedure<ctx = {}> {
   ): QueryOperation<{}, Output> {
     return {
       type: "query",
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       handler: fn as any,
       middlewares: this.middlewares,
     };
@@ -130,6 +134,7 @@ export class Procedure<ctx = {}> {
   ): MutationOperation<{}, Output> {
     return {
       type: "mutation",
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       handler: fn as any,
       middlewares: this.middlewares,
     };

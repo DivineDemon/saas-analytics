@@ -9,6 +9,14 @@
     "n"
   ],
   "rules": {
+    "@typescript-eslint/ban-types": [
+      "error",
+      {
+        "types": {
+          "object": false
+        }
+      }
+    ],
     "prefer-arrow-callback": [
       "error"
     ],

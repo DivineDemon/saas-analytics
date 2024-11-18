@@ -9,6 +9,7 @@ import { projectRouter } from "./routers/project-router";
 
 const app = new Hono().basePath("/api").use(cors());
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const appRouter = app
   .route("/auth", authRouter)
   .route("/category", categoryRouter)

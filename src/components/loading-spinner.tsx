@@ -1,4 +1,4 @@
-import { VariantProps, cva } from "class-variance-authority";
+import { cva } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
@@ -18,11 +18,7 @@ const spinnerVariants = cva(
   }
 );
 
-interface LoadingSpinnerProps extends VariantProps<typeof spinnerVariants> {
-  className?: string;
-}
-
-const LoadingSpinner = ({ size, className }: LoadingSpinnerProps) => {
+const LoadingSpinner = () => {
   return (
     <div className="flex items-center justify-center">
       <div

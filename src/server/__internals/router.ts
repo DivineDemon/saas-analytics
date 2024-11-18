@@ -13,9 +13,11 @@ type OperationType<I extends Record<string, unknown>, O> =
   | QueryOperation<I, O>
   | MutationOperation<I, O>;
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const router = <T extends Record<string, OperationType<any, any>>>(
   obj: T
 ) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const route = new Hono<{ Bindings: typeof env; Variables: any }>().onError(
     (err, c) => {
       if (err instanceof HTTPException) {
@@ -134,12 +136,15 @@ export const router = <T extends Record<string, OperationType<any, any>>>(
     }
   });
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   type InferInput<T> = T extends OperationType<infer I, any> ? I : {};
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   type InferOutput<T> = T extends OperationType<any, infer I> ? I : {};
 
   return route as Hono<
     { Bindings: typeof env; Variables: Variables },
     {
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       [K in keyof T]: T[K] extends QueryOperation<any, any>
         ? {
             $get: {

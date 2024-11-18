@@ -138,7 +138,7 @@ const CreateEventCategoryModal = ({
             <div className="">
               <Label>Color</Label>
               <div className="mt-1.5 flex flex-wrap gap-3">
-                {EMOJI_OPTIONS.map(({ emoji, label }) => (
+                {EMOJI_OPTIONS.map(({ emoji }) => (
                   <button
                     key={emoji}
                     type="button"

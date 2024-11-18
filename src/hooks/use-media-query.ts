@@ -5,7 +5,7 @@ export const useMediaQuery = () => {
     null
   );
 
-  const [dimensions, _] = useState<{
+  const [dimensions] = useState<{
     width: number;
     height: number;
   } | null>(null);

@@ -4,6 +4,7 @@ import superjson, { SuperJSONResult } from "superjson";
 
 export type CacheArgs = { cache?: { id: string; ttl?: number } };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function isSuperJSONResult(obj: any): obj is SuperJSONResult {
   return (
     typeof obj === "object" && obj !== null && "json" in obj && "meta" in obj
@@ -33,6 +34,7 @@ export const cacheExtension = ({ redis }: { redis: Redis }) => {
             }
           }
 
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const result = await (ctx as any).$parent[ctx.$name as any].findFirst(
             rest
           );
@@ -67,7 +69,9 @@ export const cacheExtension = ({ redis }: { redis: Redis }) => {
             }
           }
 
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const result = await (ctx as any).$parent[
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
             ctx.$name as any
           ].findUnique(rest);
 
@@ -101,6 +105,7 @@ export const cacheExtension = ({ redis }: { redis: Redis }) => {
             }
           }
 
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const result = await (ctx as any).$parent[ctx.$name as any].findMany(
             rest
           );
@@ -129,6 +134,7 @@ export const cacheExtension = ({ redis }: { redis: Redis }) => {
             await redis.del(cache.id);
           }
 
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const result = await (ctx as any).$parent[ctx.$name as any].create(
             rest
           );
@@ -147,6 +153,7 @@ export const cacheExtension = ({ redis }: { redis: Redis }) => {
             await redis.del(cache.id);
           }
 
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const result = await (ctx as any).$parent[ctx.$name as any].update(
             rest
           );
@@ -165,6 +172,7 @@ export const cacheExtension = ({ redis }: { redis: Redis }) => {
             await redis.del(cache.id);
           }
 
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const result = await (ctx as any).$parent[ctx.$name as any].delete(
             rest
           );

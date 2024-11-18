@@ -235,13 +235,13 @@ const App = () => {
                           language="typescript"
                           style={{
                             ...oneDark,
-                            'pre[class*="language-"]': {
-                              ...oneDark['pre[class*="language-"]'],
+                            "pre[class*='language-']": {
+                              ...oneDark["pre[class*='language-']"],
                               background: "transparent",
                               overflow: "hidden",
                             },
-                            'code[class*="language-"]': {
-                              ...oneDark['code[class*="language-"]'],
+                            "code[class*='language-']": {
+                              ...oneDark["code[class*='language-']"],
                               background: "transparent",
                             },
                           }}
