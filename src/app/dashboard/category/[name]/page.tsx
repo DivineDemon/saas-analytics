@@ -58,7 +58,9 @@ const Page = async ({ params }: PageProps) => {
   const hasEvents = category._count.events > 0;
 
   return (
-    <DashboardLayout title={`${category.emoji} ${category.name} Events`}>
+    <DashboardLayout
+      title={`${category.emoji} ${category.name.charAt(0).toUpperCase()}${category.name.slice(1)} Events`}
+    >
       <CategoryPageContent hasEvents={hasEvents} category={category} />
     </DashboardLayout>
   );

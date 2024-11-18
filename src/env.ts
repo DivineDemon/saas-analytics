@@ -17,6 +17,12 @@ export const env = createEnv({
         /^[A-Za-z0-9_\-]{26}\.[A-Za-z0-9_\-]{6}\.[A-Za-z0-9_\-]{38}$/,
         "Invalid Discord bot token format"
       ),
+    STRIPE_SECRET_KEY: z
+      .string()
+      .regex(
+        /^sk_(test|live)_[0-9a-zA-Z]{24,}$/,
+        "Invalid Stripe secret key format"
+      ),
   },
   client: {
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z
@@ -24,8 +30,11 @@ export const env = createEnv({
       .regex(/^pk_test_[A-Za-z0-9]+$/, {
         message: "Invalid NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY format",
       }),
+    NEXT_PUBLIC_APP_URL: z.string().url(),
   },
   runtimeEnv: {
+    NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
+    STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
     VERCEL_URL: process.env.VERCEL_URL,
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,

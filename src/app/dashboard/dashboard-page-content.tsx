@@ -76,7 +76,7 @@ const DashboardPageContent = () => {
                     }}
                   />
                   <div className="">
-                    <h3 className="text-lg/7 font-medium tracking-tight text-gray-950">
+                    <h3 className="text-lg/7 font-medium capitalize tracking-tight text-gray-950">
                       {category.emoji ? category.emoji : "📂"} {category.name}
                     </h3>
                     <p className="text-sm/6 text-gray-600">
