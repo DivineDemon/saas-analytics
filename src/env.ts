@@ -10,7 +10,7 @@ export const env = createEnv({
     CLERK_SECRET_KEY: z.string().regex(/^sk_test_[A-Za-z0-9-\.]+$/, {
       message: "Invalid CLERK_SECRET_KEY format",
     }),
-    VERCEL_URL: z.string().url().optional(),
+    // VERCEL_URL: z.string().url().optional(),
     DISCORD_BOT_TOKEN: z
       .string()
       .regex(
@@ -35,7 +35,7 @@ export const env = createEnv({
   runtimeEnv: {
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
     STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
-    VERCEL_URL: process.env.VERCEL_URL,
+    // VERCEL_URL: process.env.VERCEL_URL,
     DATABASE_URL: process.env.DATABASE_URL,
     NODE_ENV: process.env.NODE_ENV,
     CLERK_SECRET_KEY: process.env.CLERK_SECRET_KEY,
