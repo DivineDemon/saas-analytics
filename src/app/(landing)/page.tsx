@@ -144,7 +144,7 @@ const App = () => {
                   </p>
                   <p className="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center">
                     Get notified about critical events the moment they happen,
-                    no matter if you're at home or on the go.
+                    no matter if you&apos;re at home or on the go.
                   </p>
                 </div>
                 <div className="relative min-h-[30rem] w-full grow [container-type:inline-size] max-lg:mx-auto max-lg:max-w-sm">
@@ -276,8 +276,8 @@ const App = () => {
                 <Star className="size-5 fill-brand-600 text-brand-600" />
               </div>
               <p className="text-pretty text-center text-base font-medium tracking-tight text-brand-950 sm:text-lg lg:text-left lg:text-lg/8">
-                PingPanda has been a gamechanger for me. I've been using it for
-                2 months now and seeing sales pop up in real-time is super
+                PingPanda has been a gamechanger for me. I&apos;ve been using it
+                for 2 months now and seeing sales pop up in real-time is super
                 satisfying.
               </p>
               <div className="mt-2 flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-start lg:justify-start">
@@ -306,9 +306,9 @@ const App = () => {
                 <Star className="size-5 fill-brand-600 text-brand-600" />
               </div>
               <p className="text-pretty text-center text-base font-medium tracking-tight text-brand-950 sm:text-lg lg:text-left lg:text-lg/8">
-                PingPanda's been paying off for our SaaS. Nice to have a simple
-                way of seeing how we're doing day-to-day. Definitely makes our
-                lives easier.
+                PingPanda&apos;s been paying off for our SaaS. Nice to have a
+                simple way of seeing how we&apos;re doing day-to-day. Definitely
+                makes our lives easier.
               </p>
               <div className="mt-2 flex flex-col items-center justify-center gap-4 sm:flex-row sm:items-start lg:justify-start">
                 <Image

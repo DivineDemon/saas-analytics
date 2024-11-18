@@ -23,6 +23,9 @@ export const env = createEnv({
         /^sk_(test|live)_[0-9a-zA-Z]{24,}$/,
         "Invalid Stripe secret key format"
       ),
+    STRIPE_WEBHOOK_SECRET: z
+      .string()
+      .regex(/^whsec_[a-f0-9]{64}$/, "Invalid Stripe Webhook Secret Format!"),
   },
   client: {
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: z
@@ -42,6 +45,7 @@ export const env = createEnv({
     NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY:
       process.env.NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY,
     DISCORD_BOT_TOKEN: process.env.DISCORD_BOT_TOKEN,
+    STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
   },
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,
   emptyStringAsUndefined: true,

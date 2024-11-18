@@ -116,9 +116,11 @@ const CategoryPageContent = ({
       ...(data?.events[0]
         ? Object.keys(data?.events[0].fields as object).map((field) => ({
             accessorFn: (row: Event) =>
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               (row.fields as Record<string, any>)[field],
             header: field,
             cell: ({ row }: { row: Row<Event> }) =>
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
               (row.original.fields as Record<string, any>)[field] || "-",
           }))
         : []),

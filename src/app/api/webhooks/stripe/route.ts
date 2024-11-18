@@ -3,6 +3,7 @@ import { headers } from "next/headers";
 import Stripe from "stripe";
 
 import { db } from "@/db";
+import { env } from "@/env";
 import { stripe } from "@/lib/stripe";
 
 export async function POST(request: Request) {
@@ -12,7 +13,7 @@ export async function POST(request: Request) {
   const event = stripe.webhooks.constructEvent(
     body,
     signature ?? "",
-    process.env.STRIPE_WEBHOOK_SECRET ?? ""
+    env.STRIPE_WEBHOOK_SECRET ?? ""
   );
 
   if (event.type === "checkout.session.completed") {
