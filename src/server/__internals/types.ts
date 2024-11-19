@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Context, TypedResponse } from "hono";
 import { Variables } from "hono/types";
 import { z } from "zod";
