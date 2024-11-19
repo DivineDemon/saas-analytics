@@ -20,7 +20,7 @@ const DashboardPageContent = () => {
 
   const { data: categories, isPending: isEventCategoriesLoading } = useQuery({
     queryFn: async () => {
-      const response = await client.category.getEventCategories.$get();
+      const response = await client.category.getEventCategories.$get({});
       const { categories } = await response.json();
 
       return categories;

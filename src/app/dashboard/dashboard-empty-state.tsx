@@ -15,7 +15,9 @@ const DashboardEmptyState = () => {
     isPending: isInsertingSampleCategories,
   } = useMutation({
     mutationFn: async () => {
-      const response = await client.category.insertQuickstartCategories.$post();
+      const response = await client.category.insertQuickstartCategories.$post(
+        {}
+      );
       return await response.json();
     },
     onSuccess: () => {

@@ -15,7 +15,7 @@ const UpgradePageContent = ({ plan }: { plan: Plan }) => {
 
   const { mutate: createCheckoutSession } = useMutation({
     mutationFn: async () => {
-      const response = await client.payment.createCheckoutSession.$post();
+      const response = await client.payment.createCheckoutSession.$post({});
       return await response.json();
     },
     onSuccess: ({ url }) => {
@@ -28,7 +28,7 @@ const UpgradePageContent = ({ plan }: { plan: Plan }) => {
   const { data: usageData } = useQuery({
     queryKey: ["usage"],
     queryFn: async () => {
-      const response = await client.project.getUsage.$get();
+      const response = await client.project.getUsage.$get({});
       return await response.json();
     },
   });

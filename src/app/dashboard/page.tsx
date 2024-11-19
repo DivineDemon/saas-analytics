@@ -11,6 +11,7 @@ import { db } from "@/db";
 import { createCheckoutSession } from "@/lib/stripe";
 
 import DashboardPageContent from "./dashboard-page-content";
+
 interface PageProps {
   searchParams: Promise<{
     [key: string]: string | string[] | undefined;

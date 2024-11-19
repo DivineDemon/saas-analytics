@@ -19,7 +19,7 @@ const PaymentSuccessModal = () => {
   const { data: userPlan, isPending } = useQuery({
     queryKey: ["user-plan"],
     queryFn: async () => {
-      const response = await client.payment.getUserPlan.$get();
+      const response = await client.payment.getUserPlan.$get({});
       return await response.json();
     },
     refetchInterval: (query) => {
@@ -45,7 +45,9 @@ const PaymentSuccessModal = () => {
       <div className="flex flex-col items-center">
         {isPending || !isPaymentSuccessful ? (
           <div className="flex h-64 flex-col items-center justify-center">
-            <LoadingSpinner className="mb-4" />
+            <div className="mb-4">
+              <LoadingSpinner />
+            </div>
             <p className="text-lg/7 font-medium text-gray-900">
               Upgrading your account...
             </p>
