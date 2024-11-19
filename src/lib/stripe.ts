@@ -22,8 +22,8 @@ export const createCheckoutSession = async ({
       },
     ],
     mode: "payment",
-    success_url: `${env.NEXT_PUBLIC_APP_URL}/dashboard?success=true`,
-    cancel_url: `${env.NEXT_PUBLIC_APP_URL}/pricing`,
+    success_url: `http://localhost:3000/dashboard?success=true`,
+    cancel_url: `http://localhost:3000/pricing`,
     customer_email: userEmail,
     metadata: {
       userId,
