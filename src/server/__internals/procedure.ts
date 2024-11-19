@@ -3,14 +3,9 @@ import { StatusCode } from "hono/utils/http-status";
 import superjson from "superjson";
 import { z } from "zod";
 
-
-
 import { env } from "@/env";
 
-
-
 import { Middleware, MutationOperation, QueryOperation } from "./types";
-
 
 declare module "hono" {
   interface Context {

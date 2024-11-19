@@ -8,9 +8,9 @@ import { db } from "@/db";
 import CategoryPageContent from "./category-page-content";
 
 interface PageProps {
-  params: {
+  params: Promise<{
     name: string | string[] | undefined;
-  };
+  }>;
 }
 
 const Page = async ({ params }: PageProps) => {
