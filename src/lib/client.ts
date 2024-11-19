@@ -54,13 +54,13 @@ export const baseClient = hc<AppType>(getBaseUrl(), {
   },
 })["api"];
 
-function getHandler(obj: Object, ...keys: string[]) {
+function getHandler(obj: object, ...keys: string[]) {
   let current = obj;
   for (const key of keys) {
     current = current[key as keyof typeof current];
   }
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  return current as Function;
+  return current as (...args: any[]) => void;
 }
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

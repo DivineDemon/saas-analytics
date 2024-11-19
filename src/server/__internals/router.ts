@@ -137,9 +137,9 @@ export const router = <T extends Record<string, OperationType<any, any>>>(
   });
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  type InferInput<T> = T extends OperationType<infer I, any> ? I : {};
+  type InferInput<T> = T extends OperationType<infer I, any> ? I : object;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  type InferOutput<T> = T extends OperationType<any, infer I> ? I : {};
+  type InferOutput<T> = T extends OperationType<any, infer I> ? I : object;
 
   return route as Hono<
     { Bindings: typeof env; Variables: Variables },

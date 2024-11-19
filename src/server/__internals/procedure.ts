@@ -3,9 +3,14 @@ import { StatusCode } from "hono/utils/http-status";
 import superjson from "superjson";
 import { z } from "zod";
 
+
+
 import { env } from "@/env";
 
+
+
 import { Middleware, MutationOperation, QueryOperation } from "./types";
+
 
 declare module "hono" {
   interface Context {
@@ -19,7 +24,7 @@ export type SuperJSONTypedResponse<
   U extends StatusCode = StatusCode,
 > = TypedResponse<SuperJSONParsedType<T>, U, "json">;
 
-export class Procedure<ctx = {}> {
+export class Procedure<ctx = object> {
   private readonly middlewares: Middleware<ctx>[] = [];
 
   private superjsonMiddleware: Middleware<ctx> =
@@ -112,7 +117,7 @@ export class Procedure<ctx = {}> {
     }) =>
       | SuperJSONTypedResponse<Output>
       | Promise<SuperJSONTypedResponse<Output>>
-  ): QueryOperation<{}, Output> {
+  ): QueryOperation<Record<string, unknown>, Output> {
     return {
       type: "query",
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -131,7 +136,7 @@ export class Procedure<ctx = {}> {
       ctx: ctx;
       c: Context<{ Bindings: typeof env }>;
     }) => TypedResponse<Output> | Promise<TypedResponse<Output>>
-  ): MutationOperation<{}, Output> {
+  ): MutationOperation<Record<string, unknown>, Output> {
     return {
       type: "mutation",
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
