@@ -13,7 +13,6 @@ export type Middleware<I> = ({
   ctx: I;
   next: <B>(args?: B) => B & I;
   c: Context<{ Bindings: typeof env; Variables: Variables }>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
 }) => Promise<any>;
 
 export type QueryOperation<
@@ -31,7 +30,6 @@ export type QueryOperation<
     c: Context;
     input: ZodInput;
   }) => Promise<TypedResponse<Output>>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   middlewares: Middleware<any>[];
 };
 
@@ -49,7 +47,6 @@ export type MutationOperation<
     c: Context;
     input: ZodInput;
   }) => Promise<TypedResponse<Output>>;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   middlewares: Middleware<any>[];
 };
 

@@ -130,11 +130,9 @@ const MockDiscordUI = ({ children }: PropsWithChildren) => {
             <HelpCircle className="hidden size-5 cursor-not-allowed hover:text-white sm:block" />
           </div>
         </div>
-        {/* Message History */}
         <div className="flex flex-1 flex-col-reverse overflow-y-auto bg-discord-background p-4">
           {children}
         </div>
-        {/* Message Input */}
         <div className="p-4">
           <div className="flex items-center rounded-lg bg-[#40444B] p-1">
             <PlusCircle className="mx-3 cursor-not-allowed text-[#B9BBBE] hover:text-white" />

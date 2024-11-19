@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Context, TypedResponse } from "hono";
 import { StatusCode } from "hono/utils/http-status";
 import superjson from "superjson";
@@ -56,7 +57,6 @@ export class Procedure<ctx = object> {
       c: Context<{ Bindings: typeof env }>;
     }) => Promise<Return>
   ): Procedure<ctx & T & Return> {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     return new Procedure<ctx & T & Return>([...this.middlewares, fn as any]);
   }
 
@@ -76,7 +76,6 @@ export class Procedure<ctx = object> {
     ): QueryOperation<Schema, Output> => ({
       type: "query",
       schema,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       handler: fn as any,
       middlewares: this.middlewares,
     }),
@@ -94,7 +93,6 @@ export class Procedure<ctx = object> {
     ): MutationOperation<Schema, Output> => ({
       type: "mutation",
       schema,
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       handler: fn as any,
       middlewares: this.middlewares,
     }),
@@ -115,7 +113,6 @@ export class Procedure<ctx = object> {
   ): QueryOperation<Record<string, unknown>, Output> {
     return {
       type: "query",
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       handler: fn as any,
       middlewares: this.middlewares,
     };
@@ -134,7 +131,6 @@ export class Procedure<ctx = object> {
   ): MutationOperation<Record<string, unknown>, Output> {
     return {
       type: "mutation",
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       handler: fn as any,
       middlewares: this.middlewares,
     };
