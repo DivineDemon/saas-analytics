@@ -34,7 +34,7 @@ export const env = createEnv({
       .regex(/^pk_test_[A-Za-z0-9]+$/, {
         message: "Invalid NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY format",
       }),
-    NEXT_PUBLIC_APP_URL: z.string().url(),
+    NEXT_PUBLIC_APP_URL: z.string(),
   },
   runtimeEnv: {
     NEXT_PUBLIC_APP_URL: process.env.NEXT_PUBLIC_APP_URL,
