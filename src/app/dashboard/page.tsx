@@ -11,11 +11,10 @@ import { db } from "@/db";
 import { createCheckoutSession } from "@/lib/stripe";
 
 import DashboardPageContent from "./dashboard-page-content";
-
 interface PageProps {
-  searchParams: {
+  searchParams: Promise<{
     [key: string]: string | string[] | undefined;
-  };
+  }>;
 }
 
 const Page = async ({ searchParams }: PageProps) => {
@@ -35,7 +34,7 @@ const Page = async ({ searchParams }: PageProps) => {
     redirect("/sign-in");
   }
 
-  const intent = searchParams.intent;
+  const { intent, success } = await searchParams;
   if (intent === "upgrade") {
     const session = await createCheckoutSession({
       userEmail: user.email,
@@ -46,8 +45,6 @@ const Page = async ({ searchParams }: PageProps) => {
       redirect(session.url);
     }
   }
-
-  const success = searchParams.success;
 
   return (
     <>
