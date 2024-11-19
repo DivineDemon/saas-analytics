@@ -39,7 +39,7 @@ const PaymentSuccessModal = () => {
       showModal={isOpen}
       setShowModal={setIsOpen}
       onClose={handleClose}
-      className="px-6 pt-6"
+      className="p-6"
       preventDefaultClose={!isPaymentSuccessful}
     >
       <div className="flex flex-col items-center">
