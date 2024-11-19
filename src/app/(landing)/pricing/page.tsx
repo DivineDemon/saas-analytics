@@ -18,7 +18,7 @@ const Page = () => {
 
   const { mutate: createCheckoutSession } = useMutation({
     mutationFn: async () => {
-      const response = await client.payment.createCheckoutSession.$post();
+      const response = await client.payment.createCheckoutSession.$post({});
       return await response.json();
     },
     onSuccess: ({ url }) => {
