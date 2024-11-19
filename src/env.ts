@@ -11,7 +11,7 @@ export const env = createEnv({
     CLERK_SECRET_KEY: z.string().regex(/^sk_test_[A-Za-z0-9-\.]+$/, {
       message: "Invalid CLERK_SECRET_KEY format",
     }),
-    VERCEL_URL: z.string().url().optional(),
+    VERCEL_URL: z.string(),
     DISCORD_BOT_TOKEN: z
       .string()
       .regex(
