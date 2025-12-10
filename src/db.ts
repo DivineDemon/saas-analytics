@@ -1,4 +1,3 @@
-import { Pool } from "@neondatabase/serverless";
 import { PrismaNeon } from "@prisma/adapter-neon";
 import { PrismaClient } from "@prisma/client";
 
@@ -11,13 +10,11 @@ declare global {
 
 let prisma: PrismaClient;
 if (env.NODE_ENV === "production") {
-  const pool = new Pool({ connectionString: env.DATABASE_URL });
-  const adapter = new PrismaNeon(pool);
+  const adapter = new PrismaNeon({ connectionString: env.DATABASE_URL });
   prisma = new PrismaClient({ adapter });
 } else {
   if (!global.cachedPrisma) {
-    const pool = new Pool({ connectionString: env.DATABASE_URL });
-    const adapter = new PrismaNeon(pool);
+    const adapter = new PrismaNeon({ connectionString: env.DATABASE_URL });
     global.cachedPrisma = new PrismaClient({ adapter });
   }
   prisma = global.cachedPrisma;

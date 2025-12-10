@@ -1,7 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { hc } from "hono/client";
 import { HTTPException } from "hono/http-exception";
-import { StatusCode } from "hono/utils/http-status";
 import superjson from "superjson";
 
 import { env } from "@/env";
@@ -28,7 +27,7 @@ export const baseClient = hc<AppType>(getBaseUrl(), {
     const response = await fetch(input, { ...init, cache: "no-store" });
 
     if (!response.ok) {
-      throw new HTTPException(response.status as StatusCode, {
+      throw new HTTPException(response.status as any, {
         message: response.statusText,
         res: response,
       });

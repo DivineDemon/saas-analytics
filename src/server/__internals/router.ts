@@ -88,14 +88,14 @@ export const router = <T extends Record<string, OperationType<any, any>>>(
               }
             }
 
-            return operation.handler({ c, ctx, input });
+            return operation.handler({ c, ctx, input }) as any;
           }
         );
       } else {
         route.get(path, ...operationMiddlewares, (c) => {
           const ctx = c.get("__middleware_output") || {};
 
-          return operation.handler({ c, ctx, input: undefined });
+          return operation.handler({ c, ctx, input: undefined }) as any;
         });
       }
     } else if (operation.type === "mutation") {
@@ -122,14 +122,14 @@ export const router = <T extends Record<string, OperationType<any, any>>>(
               }
             }
 
-            return operation.handler({ c, ctx, input });
+            return operation.handler({ c, ctx, input }) as any;
           }
         );
       } else {
         route.post(path, ...operationMiddlewares, (c) => {
           const ctx = c.get("__middleware_output") || {};
 
-          return operation.handler({ c, ctx, input: undefined });
+          return operation.handler({ c, ctx, input: undefined }) as any;
         });
       }
     }
