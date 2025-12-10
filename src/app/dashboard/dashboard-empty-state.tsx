@@ -28,6 +28,7 @@ const DashboardEmptyState = () => {
   return (
     <Card className="flex flex-1 flex-col items-center justify-center rounded-2xl p-6 text-center">
       <div className="flex w-full justify-center">
+        {/* eslint-disable @next/next/no-img-element */}
         <img
           src="/brand-asset-wave.png"
           alt="empty state"

@@ -58,6 +58,7 @@ const PaymentSuccessModal = () => {
         ) : (
           <>
             <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-50">
+              {/* eslint-disable @next/next/no-img-element */}
               <img
                 src="/brand-asset-heart.png"
                 alt="success-payment"
